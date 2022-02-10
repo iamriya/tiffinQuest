@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllVendors } from '../actions/vendorAction';
@@ -33,3 +34,14 @@ export default function Homescreen() {
         </div>
     )
 };
+=======
+import React from "react";
+
+export default function Homescreen() {
+    return (
+        <div>
+            homescreen;
+        </div>
+    )
+}
+>>>>>>> f4f29f025f7ae28548502b5b87e54d8b9196dd67
