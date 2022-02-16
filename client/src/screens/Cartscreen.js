@@ -6,7 +6,7 @@ export default function Cartscreen() {
     const cartstate = useSelector(state => state.cartReducer);
     const cartItems = cartstate.cartItems;
     const dispatch = useDispatch();
-    
+    var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
     return (
         <div>
             <div className="row justify-content-center">
@@ -24,10 +24,21 @@ export default function Cartscreen() {
                                     <i className="fa fa-minus" onClick={() => { dispatch(addToCart(item, item.quantity - 1, item.cusine_type)) }} arian-hidden="true"></i>
                                     <hr />
                                 </div>
+                                <div className="w-100 m-1">
+                                    <img src={item.image} style={{ height: '80px', width: '120px' }} />
+                                </div>
+                                <div className="w-100 m-1">
+                                    <i className="fa fa-trash mt-5" onClick={() => { dispatch(deleteFromCart(item)) }} arian-hidden="true"></i>
+                                </div>
                             </div>
                         )
                     })}
                 </div>
+                <div className="col-md-4 text-end">
+                    <h2 style={{ fontSize: '40px' }}>SubTotal: ${subtotal}</h2>
+                    <button className="btn">CHECK OUT</button>
+                </div>
+
             </div>
         </div>
     )
