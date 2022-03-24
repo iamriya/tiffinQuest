@@ -66,3 +66,22 @@ a{
   text-decoration: none !important;
   color: black !important;
 }
+
+.adminfunctions{
+  padding: 10px;
+  background-color: rgb(1,1,77);
+}
+
+.adminfunctions li{
+  list-style-type: none !important;
+  display: inline !important;
+}
+
+.adminfunctions li a{
+  color: white !important;
+  padding: 40px;
+}
+
+td, tr, th{
+  text-align: left !important;
+}
