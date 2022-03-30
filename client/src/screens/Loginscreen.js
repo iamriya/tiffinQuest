@@ -10,7 +10,7 @@ export default function Loginscreen() {
   const [password, setpassword] = useState('')
   const dispatch = useDispatch();
   const loginstate = useSelector(state=>state.loginUserReducer);
-  const {laoding, error} = loginstate;
+  const {loading, error} = loginstate;
   useEffect(() => {
     if (localStorage.getItem('currentUser')){
       window.location.href = '/';
@@ -30,7 +30,7 @@ export default function Loginscreen() {
       <div className='row justify-content-center mt-5'>
         <div className='col-md-5 mt-5 text-start shadow-lg p-3 mb-5 bg-body rounded'>
           
-          {laoding && (<Loading/>)}
+          {loading && (<Loading/>)}
           {error && (<Error error={'Invalid Credentials'}/>)}
 
           <div><h2 className='text-center m-3'>Login Page</h2></div>

@@ -1,6 +1,13 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../actions/userAction';
+
 
 export default function Navbar() {
+    const cartstate = useSelector(state => state.cartReducer);
+    const userstate = useSelector(state => state.loginUserReducer);
+    const dispatch = useDispatch();
+    const { currentUser } = userstate;
 
     return (
         <div>
@@ -11,9 +18,23 @@ export default function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/user">UserName</a>
+                        {currentUser ? (<li>
+                            <div class="dropdown mt-2">
+                                <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {currentUser.name}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a className="dropdown-item" href="/orders">Orders</a></li>
+                                    <li><a className="dropdown-item" href="#" onClick={()=>{dispatch(logoutUser())}}><li>Log Out</li></a></li>
+                                </ul>
+                            </div>
                         </li>
+                        ) : (
+                            <li className="nav-item">
+                                <a className="nav-link" href="/login">Login</a>
+                            </li>
+                        )}
+
                         <li className="nav-item">
                             <a className="nav-link" href="/cart">Cart {cartstate.cartItems.length}</a>
                         </li>

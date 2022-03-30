@@ -23,3 +23,9 @@ export const addToCart = (vendor, quantity, cusine_type) => (dispatch, getState)
     const cartItems = getState().cartReducer.cartItems
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
 }
+
+export const deleteFromCart = (vendor) => (dispatch, getState) => {
+    dispatch({ type: 'DELETE_TO_CART', payload: vendor });
+    const cartItems = getState().cartReducer.cartItems
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+}
